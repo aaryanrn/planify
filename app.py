@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request ,redirect ,session
+from flask import Flask, render_template, request ,redirect ,session, url_for
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 
@@ -27,13 +27,12 @@ with app.app_context():
     db.create_all()
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html')
 
 @app.route('/register',methods=['GET','POST'])
 def register():
     if request.method == 'POST':
-        print("in registrer")
         name=request.form['name']
         email=request.form['email']
         password=request.form['password']
@@ -61,6 +60,18 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/dashboard')
+def dashboard():
+    if session['email']:
+        user=User.query.filter_by(email=session['email']).first()
+        return render_template('dashboard.html')
+    
+    return redirect('/')
+
+@app.route('/logout')
+def logout():
+    session.pop('emial',None)
+    return redirect('/login')
 
 if __name__ == "__main__":
     app.run(debug=True)

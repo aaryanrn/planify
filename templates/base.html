@@ -8,7 +8,9 @@
 </head>
 <body>
     {% block body %}
+    {% block dashboard %}
         
+    {% endblock dashboard %}
     {% endblock body %}
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
