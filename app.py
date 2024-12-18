@@ -83,5 +83,39 @@ def logout():
     session.pop('email', None)
     return redirect(url_for('login'))
 
+# Dummy event data with an ID
+events = [
+    {"id": 1, "name": "Music Festival", "desc": "Join us for live music and fun!", "image": "event1.jpg"},
+    {"id": 2, "name": "Art Exhibition", "desc": "Explore breathtaking artworks.", "image": "event2.jpg"},
+    {"id": 3, "name": "Tech Conference", "desc": "Discover the latest in tech innovation.", "image": "event3.jpg"},
+    {"id": 4, "name": "Food Carnival", "desc": "Taste delicious food from all around the world.", "image": "event4.jpg"},
+    {"id": 5, "name": "Dance Party", "desc": "Dance the night away with great music.", "image": "event5.jpg"},
+]
+
+@app.route('/explore-events')
+def explore_events():
+    return render_template('events.html', events=events)
+
+@app.route('/event/<int:event_id>', methods=['GET'])
+def event_details(event_id):
+    event = next((e for e in events if e['id'] == event_id), None)
+    if event:
+        return render_template('registration.html', event_name=event['name'], event_id=event_id)
+    return redirect('/explore-events')
+
+@app.route('/register_event/<int:event_id>', methods=['POST'])  # Changed route name
+def register_event(event_id):
+    # Get form data
+    name = request.form['name']
+    email = request.form['email']
+    phone = request.form['phone']
+
+    # Here you would save this data to a database, send a confirmation email, etc.
+    # For now, we'll just print it out.
+    print(f"Registered for Event {event_id}: {name}, {email}, {phone}")
+
+    return redirect(url_for('explore_events'))  # Redirect back to the events page
+
+
 if __name__ == "__main__":
     app.run(debug=True)

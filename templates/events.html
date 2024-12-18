@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <!-- {% include 'navbar.html' %} -->
+
+    <div class="event-container">
+        <h1>Explore Events</h1>
+        <div class="event-cards">
+            {% for event in events %}
+            <div class="event-card">
+                <!-- Placeholder for image (for now, empty or use a simple background) -->
+                <div class="event-image-placeholder"></div>
+                <div class="event-details">
+                    <h3>{{ event['name'] }}</h3>
+                    <p>{{ event['desc'] }}</p>
+                    <!-- Link to registration page for each event -->
+                    <a href="{{ url_for('event_details', event_id=event['id']) }}" class="register-button">Register</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body %}

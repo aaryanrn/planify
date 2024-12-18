@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
-    {% block body %}
-        {% include 'navbar.html' %}
-        <p1>dashh</p1>
-    {% endblock body %}
+{% block body %}
+    {% include 'navbar.html' %}
+    
+    <div style="margin-top: 20px; text-align: center;">
+        <a href="{{ url_for('explore_events') }}" class="btn btn-success" style="padding: 10px 20px; text-decoration: none; color: white; border-radius: 5px; background-color: #006400;">Explore Events</a>
+    </div>
+{% endblock body %}
