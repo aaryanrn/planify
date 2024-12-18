@@ -251,3 +251,27 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+
+/*nav bar starts here*/
+.nav-container {
+	position: absolute; /* Ensures the box is positioned relative to the viewport */
+	top: 20px; /* Adjust to control distance from the top */
+	left: 50%; /* Start at the horizontal center */
+	transform: translateX(-50%); /* Center the container horizontally */
+	background-color: #0ce13a; /* Light background color */
+	padding: 2px 24px; /* Add padding inside the box */
+	border: 2px solid #0bdf0b; /* Add a border */
+	border-radius: 70px; /* High border radius for a rounded effect */
+	box-shadow: 0px 4px 6px rgba(12, 124, 36, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+.nav-item a{
+	padding: 8px 80px 0px 50px;
+	font-size: 20px;
+	font-weight: 700;
+	color: #eee4e4;
+}
+
+.nav-item a:hover {
+    color: black; /* Change text color on hover */
+}

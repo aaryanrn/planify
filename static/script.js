@@ -9,3 +9,11 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
+window.addEventListener("scroll", function() {
+    if (window.scrollY > 1000) {
+        $('.navbar').css('background-color','#060913');
+    }
+    else {
+        $('.navbar').css('background-color','transparent')
+    }
+},false);

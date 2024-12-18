@@ -70,7 +70,7 @@ def login():
             return redirect(url_for('dashboard'))
         else:
             return render_template('index.html', error='Invalid credentials')
-    return render_template('login.html')
+    return render_template('index.html')
 
 @app.route('/dashboard')
 @login_required
