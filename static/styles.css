@@ -6,7 +6,7 @@
 }
 
 body {
-	background: #f6f5f7;
+	background: #080808;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -254,24 +254,45 @@ footer a {
 
 /*nav bar starts here*/
 .nav-container {
-	position: absolute; /* Ensures the box is positioned relative to the viewport */
-	top: 20px; /* Adjust to control distance from the top */
-	left: 50%; /* Start at the horizontal center */
-	transform: translateX(-50%); /* Center the container horizontally */
-	background-color: #0ce13a; /* Light background color */
-	padding: 2px 24px; /* Add padding inside the box */
-	border: 2px solid #0bdf0b; /* Add a border */
-	border-radius: 70px; /* High border radius for a rounded effect */
-	box-shadow: 0px 4px 6px rgba(12, 124, 36, 0.1); /* Optional: Add shadow for better visibility */
+    position:absolute; /* Stick to the top of the viewport */
+    top: 10px; /* Adjust the distance from the top */
+    background-color: #0ce13a; /* Background color */
+    padding: 0px 84px; /* Add padding for spacing */
+    border: 2px solid #0bdf0b; /* Border color and thickness */
+    border-radius: 70px; /* Rounded corners */
+    box-shadow: 0px 4px 6px rgba(12, 124, 36, 0.1); /* Optional shadow */
+    width: 80%; /* Ensure responsive width */
+    max-width: 1200px; /* Limit the max width for larger screens */
+    margin: 0 auto; /* Center horizontally within the page */
 }
 
-.nav-item a{
-	padding: 8px 80px 0px 50px;
-	font-size: 20px;
-	font-weight: 700;
-	color: #eee4e4;
+.nav-container:hover {
+    background-color: rgb(17, 117, 37); /* Change background color to black on hover */
 }
 
-.nav-item a:hover {
-    color: black; /* Change text color on hover */
+.nav ul {
+    list-style: none; /* Remove bullet points */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Flex layout for nav items */
+    justify-content: center; /* Space nav items evenly */
+    gap: 20px; /* Add space between items */
+}
+
+.nav li {
+    flex: 1; /* Ensure items are evenly spaced */
+}
+
+.nav a {
+    text-decoration: none; /* Remove underline */
+    color: #fff; /* Text color */
+    font-weight: bold; /* Make text bold */
+    font-size: 1.3rem; /* Font size */
+    padding: 8px 16px; /* Padding inside links */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.nav a:hover {
+    background-color: #0bdf0b; /* Hover effect */
+    color: #000; /* Change text color on hover */
 }

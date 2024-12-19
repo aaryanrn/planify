@@ -76,7 +76,7 @@ def login():
 @login_required
 def dashboard():
     user = User.query.filter_by(email=session['email']).first()
-    return render_template('dashboard.html', user=user)
+    return render_template('users/dashboard.html', user=user)
 
 @app.route('/logout')
 def logout():
@@ -94,7 +94,7 @@ events = [
 
 @app.route('/explore-events')
 def explore_events():
-    return render_template('events.html', events=events)
+    return render_template('users/events.html', events=events)
 
 @app.route('/event/<int:event_id>', methods=['GET'])
 def event_details(event_id):
