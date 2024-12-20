@@ -66,6 +66,7 @@ footer .footer-link:hover {
 
 
 /* General styles for card starts here*/
+/* General styles */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #f8fff5;
@@ -75,7 +76,7 @@ body {
 
 /* Header */
 .event-container {
-    margin-top: 200px;  /* Adjusted margin-top to bring the cards down by 2-3 cm (about 30px) */
+    margin-top: 250px;  /* Increased margin-top to bring cards down by 3-4 cm */
     padding: 20px;
 }
 
@@ -101,7 +102,7 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
-    width: calc(25% - 20px); /* 4 cards per row */
+    width: calc(25% - 20px); /* Adjusted width for 4 cards per row */
     margin-bottom: 20px;
 }
 
@@ -111,7 +112,7 @@ body {
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Event Image Placeholder (without actual image) */
+/* Event Image Placeholder */
 .event-image-placeholder {
     background-color: #ccc;
     height: 200px;
@@ -121,6 +122,7 @@ body {
 /* Event Details */
 .event-details {
     padding: 15px;
+    text-align: center;
 }
 
 .event-details h3 {
@@ -130,8 +132,7 @@ body {
 
 .event-details p {
     color: #333;
-    margin: 0;
-    text-align: center;
+    margin: 0 0 10px 0;
 }
 
 .register-button {
@@ -142,10 +143,10 @@ body {
     color: white;
     text-decoration: none;
     border-radius: 5px;
-    text-align: center;
     transition: background-color 0.3s;
 }
 
 .register-button:hover {
     background-color: #004d00;
 }
+

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% include 'users/navbar.html' %}
+
+    <div class="event-detail-container">
+        <h1>{{ event['name'] }}</h1>
+        <div class="event-detail-content">
+            <div class="event-image-placeholder"></div>
+            <p>{{ event['desc'] }}</p>
+            <h3>Date: {{ event['date'] }}</h3>
+            <h3>Location: {{ event['location'] }}</h3>
+        </div>
+        <a href="{{ url_for('register', event_id=event['id']) }}" class="register-button">Register</a>
+    </div>
+{% endblock body %}

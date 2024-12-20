@@ -8,6 +8,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.secret_key = 'secret_key'
 db = SQLAlchemy(app)
 
+
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
@@ -22,9 +23,11 @@ class User(db.Model):
     def check_password(self, password):
         return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
 
+
 # Create tables
 with app.app_context():
     db.create_all()
+
 
 def login_required(f):
     @wraps(f)
@@ -34,9 +37,11 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -58,6 +63,7 @@ def register():
             return render_template('index.html', error='Registration failed')
     return render_template('index.html')
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -72,49 +78,60 @@ def login():
             return render_template('index.html', error='Invalid credentials')
     return render_template('index.html')
 
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
     user = User.query.filter_by(email=session['email']).first()
     return render_template('users/dashboard.html', user=user)
 
+
 @app.route('/logout')
 def logout():
     session.pop('email', None)
     return redirect(url_for('login'))
 
+
 # Dummy event data with an ID
 events = [
-    {"id": 1, "name": "Music Festival", "desc": "Join us for live music and fun!", "image": "event1.jpg"},
-    {"id": 2, "name": "Art Exhibition", "desc": "Explore breathtaking artworks.", "image": "event2.jpg"},
-    {"id": 3, "name": "Tech Conference", "desc": "Discover the latest in tech innovation.", "image": "event3.jpg"},
-    {"id": 4, "name": "Food Carnival", "desc": "Taste delicious food from all around the world.", "image": "event4.jpg"},
-    {"id": 5, "name": "Dance Party", "desc": "Dance the night away with great music.", "image": "event5.jpg"},
+    {'id': 1, 'name': 'Tech Conference', 'desc': 'A conference about the latest in technology.'},
+    {'id': 2, 'name': 'Art Workshop', 'desc': 'Learn advanced art techniques.'},
+    {'id': 3, 'name': 'Coding Bootcamp', 'desc': 'Sharpen your coding skills with experts.'},
+    {'id': 4, 'name': 'Music Fest', 'desc': 'Enjoy live music from top bands.'},
+    {'id': 5, 'name': 'Robotics Expo', 'desc': 'Experience cutting-edge robotics.'},
+    {'id': 6, 'name': 'Startup Pitch', 'desc': 'Present your startup idea to investors.'},
+    {'id': 7, 'name': 'Fitness Camp', 'desc': 'Get fit with professional trainers.'},
+    {'id': 8, 'name': 'Photography Walk', 'desc': 'Learn photography with experts.'}
 ]
+
+
 
 @app.route('/explore-events')
 def explore_events():
     return render_template('users/events.html', events=events)
 
+
 @app.route('/event/<int:event_id>', methods=['GET'])
-def event_details(event_id):
+def event_detail(event_id):
     event = next((e for e in events if e['id'] == event_id), None)
-    if event:
-        return render_template('registration.html', event_name=event['name'], event_id=event_id)
-    return redirect('/explore-events')
+    if not event:
+        return render_template('404.html'), 404
+    return render_template('users/event_details.html', event=event)
 
-@app.route('/register_event/<int:event_id>', methods=['POST'])  # Changed route name
+
+@app.route('/register/<int:event_id>', methods=['GET', 'POST'])
 def register_event(event_id):
-    # Get form data
-    name = request.form['name']
-    email = request.form['email']
-    phone = request.form['phone']
+    event = next((e for e in events if e['id'] == event_id), None)
+    if not event:
+        return render_template('404.html'), 404
 
-    # Here you would save this data to a database, send a confirmation email, etc.
-    # For now, we'll just print it out.
-    print(f"Registered for Event {event_id}: {name}, {email}, {phone}")
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        # Save registration details in the database or print/log it for now
+        return render_template('success.html', event=event)
 
-    return redirect(url_for('explore_events'))  # Redirect back to the events page
+    return render_template('registration.html', event=event)
 
 
 if __name__ == "__main__":
