@@ -1,45 +1,40 @@
 from flask import Flask, render_template, request, redirect, session, url_for, flash
-from flask_sqlalchemy import SQLAlchemy
-from events_file import events_file  # Import your events blueprint
+from events_file import events_file  # Import events blueprint
+from admin import admin_blueprint  # Import admin blueprint
+from models import db, User, Event, Registration
 import bcrypt
 from functools import wraps
 
+# Initialize Flask app
 app = Flask(__name__)
-app.register_blueprint(events_file, url_prefix="/users")  # Add a URL prefix here for better organization
-
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'secret_key'
-db = SQLAlchemy(app)
 
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(150), nullable=False, unique=True)
-    password = db.Column(db.String(256), nullable=False)
+# Initialize SQLAlchemy
+db.init_app(app)
 
-    def __init__(self, name, email, password):
-        self.name = name
-        self.email = email
-        self.password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+# Register Blueprints
+app.register_blueprint(events_file, url_prefix="/users")
+app.register_blueprint(admin_blueprint, url_prefix="/admin")
 
-    def check_password(self, password):
-        return bcrypt.checkpw(password.encode('utf-8'), self.password.encode('utf-8'))
-
-
-# Create tables
+# Create database tables
 with app.app_context():
     db.create_all()
 
 
+# Utility: Login Required Decorator
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if 'email' not in session:
+            flash('You need to log in first!', 'warning')
             return redirect(url_for('login'))
         return f(*args, **kwargs)
     return decorated_function
 
 
+# Routes
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -52,18 +47,28 @@ def register():
         email = request.form['email']
         password = request.form['password']
 
+        # Check if email already exists
         if User.query.filter_by(email=email).first():
-            return render_template('index.html', error='Email already exists')
+            flash('Email already exists. Please use a different email.', 'danger')
+            return redirect(url_for('register'))
 
-        new_user = User(name=name, email=email, password=password)
+        # Create new user
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        new_user = User(name=name, email=email, password=hashed_password)
+
         try:
             db.session.add(new_user)
             db.session.commit()
-            return redirect('/')
+            flash('Registration successful! You can now log in.', 'success')
+            print("data added")
+            return redirect(url_for('login'))
         except Exception:
             db.session.rollback()
-            return render_template('index.html', error='Registration failed')
-    return render_template('index.html')
+            flash('Registration failed. Please try again.', 'danger')
+            print("Fail")
+            return redirect(url_for('register'))
+
+    return render_template('index.html')  # Use a dedicated registration template
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -73,12 +78,15 @@ def login():
         password = request.form['password']
 
         user = User.query.filter_by(email=email).first()
-        if user and user.check_password(password):
+        if user and bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
             session['email'] = user.email
+            flash('Login successful!', 'success')
             return redirect(url_for('dashboard'))
         else:
-            return render_template('index.html', error='Invalid credentials')
-    return render_template('index.html')
+            flash('Invalid email or password. Please try again.', 'danger')
+            return redirect(url_for('login'))
+
+    return render_template('index.html')  # Use a dedicated login template
 
 
 @app.route('/users/dashboard')
@@ -91,8 +99,9 @@ def dashboard():
 @app.route('/logout')
 def logout():
     session.pop('email', None)
+    flash('You have been logged out.', 'info')
     return redirect(url_for('login'))
 
-
+# Main entry point
 if __name__ == "__main__":
     app.run(debug=True)
