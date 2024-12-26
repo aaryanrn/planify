@@ -2,6 +2,8 @@ from flask import Blueprint, render_template, request, session, redirect, url_fo
 from models import db, User, Event, Registration
 from functools import wraps
 from datetime import datetime
+from werkzeug.utils import secure_filename
+import os
 
 # Initialize admin blueprint
 admin_blueprint = Blueprint('admin', __name__, template_folder='templates/admin')
@@ -36,16 +38,24 @@ def admin_login():
 def admin_dashboard():
     return render_template('admin/admin_dashboard.html')
 
-# Manage Events Route
-@admin_blueprint.route('/manage-events', methods=['GET', 'POST'])
+#admin create event route
+@admin_blueprint.route('/create-events', methods=['GET', 'POST'])
 @admin_login_required
-def manage_events():
+def create_events():
     if request.method == 'POST':
         # Retrieve form data
         title = request.form['title']
         short_desc = request.form['short_desc']
         date_str = request.form['date']  # The date input from the form
         description = request.form.get('description', '')
+        photo = request.files.get('photo')
+
+        if photo:
+            # Save the photo to the upload folder
+            filename = secure_filename(photo.filename)
+            photo.save(os.path.join('static','uploads', filename))
+        else:
+            filename = None
 
         try:
             # Convert the date string to a datetime object
@@ -56,20 +66,28 @@ def manage_events():
                 title=title,
                 short_desc=short_desc,
                 date=event_date,
-                description=description
+                description=description,
+                photo=filename
             )
             
             # Add and commit to the database
             db.session.add(new_event)
             db.session.commit()
             flash('Event created successfully!', 'success')
-            return redirect(url_for('admin.manage_events'))
+            return redirect(url_for('admin.manage_events'))  # Redirect to manage events page
         except Exception as e:
             db.session.rollback()
             flash(f'Error creating event: {str(e)}', 'danger')
 
-    # Fetch all events to display
-    events = Event.query.all()
+    # If it's a GET request, render the event creation form
+    return render_template('admin/create_events.html')
+
+
+@admin_blueprint.route('/manage-events', methods=['GET'])
+@admin_login_required
+def manage_events():
+    # Fetch all events for display
+    events = Event.query.order_by(Event.date.asc()).all()
     return render_template('admin/manage_events.html', events=events)
 
 # Admin Logout Route

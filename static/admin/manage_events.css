@@ -1,0 +1,69 @@
+
+/*css for manage events table*/
+/* Container styling */
+.container {
+    background: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 30px;
+    width: 900px; /* Set a fixed width for the container */
+}
+
+/* Table styling */
+.table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.table thead {
+    background-color: #343a40; /* Dark header background */
+    color: #ffffff; /* White header text */
+}
+
+.table thead th {
+    text-align: center;
+    padding: 10px;
+}
+
+.table tbody tr {
+    transition: background-color 0.3s;
+    height: 80px;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1; /* Light gray hover effect */
+}
+
+.table tbody td {
+    text-align: center;
+    padding: 12px 10px;
+    vertical-align: middle;
+}
+
+/* Styling for the date column */
+.table tbody tr td.date-column {
+    color: #007bff; /* Blue text for dates */
+    font-weight: bold;
+    height: 80px; /* Increased row height */
+    white-space: nowrap; /* Prevent text wrapping */
+    padding-right: 20px; /* Add right padding for spacing */
+    text-align: center; /* Center align text */
+}
+
+
+/* Styling for empty state */
+.no-events {
+    margin-top: 20px;
+    text-align: center;
+    color: #6c757d; /* Subtle gray color */
+    font-style: italic;
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    color: #343a40;
+    font-weight: bold;
+}
