@@ -31,7 +31,6 @@
             {% endif %}
         </div>
 
-        <a href="{{ url_for('events_file.register_event_user', event_id=event.id) }}" class="register-button">Register</a>
-        
+        <a href="{{ url_for('events_file.event_registration_page', event_id=event.id) }}" class="register-button">Register</a>
     </div>  
 {% endblock body %}

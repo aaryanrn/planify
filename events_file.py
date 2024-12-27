@@ -16,6 +16,14 @@ def event_details(event_id):
     event = Event.query.get_or_404(event_id)  # Automatically handles event not found
     return render_template('users/event_details.html', event=event)
 
+@events_file.route('/event_registration/<int:event_id>')
+def event_registration_page(event_id):
+    event = Event.query.get(event_id)
+    if not event:
+        flash('Event not found!', 'error')
+        return redirect(url_for('events_file.explore_events'))
+    return render_template('users/events_registration.html', event=event)
+
 # Route: Register a user to an event
 @events_file.route('/register_event', methods=['POST'])
 def register_event_user():
