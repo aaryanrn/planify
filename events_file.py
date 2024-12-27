@@ -44,14 +44,12 @@ def explore_events():
     return render_template('users/events.html', events=events_list)
 
 
+
 # Route: Display event details
 @events_file.route('/events_details/<int:event_id>', methods=['GET'])
 def event_details(event_id):
-    event = Event.query.get(event_id)
-    if event:
-        return render_template('users/event_details.html', event=event)
-    flash('Event not found!', 'error')
-    return redirect(url_for('events_file.explore_events'))
+    event = Event.query.get_or_404(event_id)  # Automatically handles event not found
+    return render_template('users/event_details.html', event=event)
 
 
 # Route: Register for an event from the event details page

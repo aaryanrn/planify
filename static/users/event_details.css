@@ -1,0 +1,86 @@
+/* General styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8fff5;
+    margin: 0;
+    padding: 0;
+}
+
+/* Event Detail Container */
+.event-detail-container {
+    width: 45%;
+    margin: 30px auto; /* Reduced margin for a more compact design */
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Event Title (Bold and Large) */
+.event-detail-container h1 {
+    font-size: 28px;  /* Slightly smaller title */
+    color: #006400;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;  /* Reduced bottom margin */
+}
+
+/* Event Image */
+.event-image-placeholder {
+    width: 100%;
+    height: 200px;  /* Reduced image height for a more compact look */
+    background-color: #ccc;
+    margin-bottom: 15px;  /* Reduced bottom margin */
+    overflow: hidden;
+}
+
+.event-image-placeholder img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Event Short Description */
+.event-detail-content p {
+    font-size: 16px;  /* Reduced font size */
+    color: #333;
+    line-height: 1.5;  /* Reduced line height */
+    margin-bottom: 15px;  /* Reduced bottom margin */
+    text-align: center;
+}
+
+/* Event Full Description (below short desc) */
+.event-detail-content {
+    margin-top: 10px;  /* Reduced margin */
+}
+
+.event-detail-content h3 {
+    font-size: 18px;  /* Reduced font size */
+    color: #006400;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Register Button */
+.register-button {
+    display: inline-block;
+    padding: 10px 20px;  /* Reduced padding */
+    margin-top: 20px;  /* Reduced margin */
+    background-color: #006400;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;  /* Reduced font size */
+    text-align: center;
+    width: 130px;  /* Narrower width */
+    max-width: 200px;  /* Max width for the button */
+    margin-left: 270px;
+    margin-right: auto;
+    transition: background-color 0.3s;
+}
+
+
+.register-button:hover {
+    background-color: #004d00;
+}
