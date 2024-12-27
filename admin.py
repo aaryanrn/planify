@@ -90,27 +90,57 @@ def manage_events():
     events = Event.query.order_by(Event.date.asc()).all()
     return render_template('admin/manage_events.html', events=events)
 
+@admin_blueprint.route('/edit-event/<int:event_id>', methods=['GET', 'POST'])
+@admin_login_required
+def edit_event(event_id):
+    event = Event.query.get_or_404(event_id)  # Fetch the event by ID
+
+    if request.method == 'POST':
+        # Update event fields
+        event.title = request.form['title']
+        event.short_desc = request.form['short_desc']
+        event.description = request.form.get('description', event.description)
+        date_str = request.form['date']
+        event.date = datetime.strptime(date_str, "%Y-%m-%dT%H:%M")  # Convert date
+
+        # Update photo if provided
+        photo = request.files.get('photo')
+        if photo:
+            filename = secure_filename(photo.filename)
+            photo.save(os.path.join('static', 'uploads', filename))
+            event.photo = filename
+
+        try:
+            db.session.commit()
+            flash('Event updated successfully!', 'success')
+            return redirect(url_for('admin.manage_events'))
+        except Exception as e:
+            db.session.rollback()
+            flash(f'Error updating event: {str(e)}', 'danger')
+
+    return render_template('admin/edit_event.html', event=event)
+
+@admin_blueprint.route('/delete-event/<int:event_id>', methods=['POST'])
+@admin_login_required
+def delete_event(event_id):
+    event = Event.query.get_or_404(event_id)  # Fetch the event by ID
+    try:
+        if event.photo:
+            # Delete the photo file
+            os.remove(os.path.join('static', 'uploads', event.photo))
+        db.session.delete(event)  # Delete the event
+        db.session.commit()
+        flash('Event deleted successfully!', 'success')
+    except Exception as e:
+        db.session.rollback()
+        flash(f'Error deleting event: {str(e)}', 'danger')
+
+    return redirect(url_for('admin.manage_events'))
+
+
 # Admin Logout Route
 @admin_blueprint.route('/admin-logout')
 def admin_logout():
     session.pop('admin_logged_in', None)
     flash('You have been logged out as admin.', 'info')
     return redirect(url_for('admin.admin_login'))
-
-@admin_blueprint.route('/test-insert-event')
-def test_insert_event():
-    try:
-        event_date = datetime.strptime("2024-12-30 10:00:00", "%Y-%m-%d %H:%M:%S")
-        # Hardcoded data
-        new_event = Event(
-            title="Tech Conference",
-            short_desc="A conference about the latest in technology.",
-            date=event_date,
-            description="Join us for an exciting conference on the latest advancements in technology."
-        )
-        db.session.add(new_event)
-        db.session.commit()
-        return "Event added successfully!", 200
-    except Exception as e:
-        db.session.rollback()
-        return f"Error: {e}", 500

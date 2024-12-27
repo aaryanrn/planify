@@ -6,7 +6,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 30px;
-    width: 900px; /* Set a fixed width for the container */
+    margin-left: 200px;
+    width: 1200px; /* Set a fixed width for the container */
 }
 
 /* Table styling */
@@ -66,4 +67,12 @@ h1 {
     text-align: center;
     color: #343a40;
     font-weight: bold;
+}
+
+.event-photo {
+    width: 100px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    object-fit: cover;
 }
