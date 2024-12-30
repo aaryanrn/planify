@@ -31,5 +31,6 @@ class Registration(db.Model):
     user_id = db.Column(db.String(36), db.ForeignKey('user.id'), nullable=False)
     event_id = db.Column(db.Integer, db.ForeignKey('event.id'), nullable=False)
     registration_date = db.Column(db.DateTime, default=datetime.utcnow)
-    status = db.Column(db.String(10), default='pending')  # Updated string length
     remarks = db.Column(db.Text, nullable=True)
+    __table_args__ = (db.UniqueConstraint('user_id', 'event_id', name='unique_registration'),)
+

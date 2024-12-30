@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from models import db, User, Event, Registration
 
 # Create Blueprint
@@ -24,60 +24,52 @@ def event_registration_page(event_id):
         return redirect(url_for('events_file.explore_events'))
     return render_template('users/events_registration.html', event=event)
 
-# Route: Register a user to an event
 @events_file.route('/register_event', methods=['POST'])
 def register_event_user():
-    user_id = request.form.get('user_id')
+    # Extract form data
+    email = request.form.get('email')  # Use email to find the user
     event_id = request.form.get('event_id')
     remarks = request.form.get('remarks', '')
 
-    user = User.query.get(user_id)
-    event = Event.query.get(event_id)
-
-    if not user or not event:
-        flash('Invalid user or event!', 'error')
+    # Validate required fields
+    if not (email and event_id):
+        flash('Email and event are required!', 'error')
         return redirect(url_for('events_file.explore_events'))
 
-    # Create a new registration
-    new_registration = Registration(user_id=user_id, event_id=event_id, remarks=remarks)
+    # Check if user exists
+    user = User.query.filter_by(email=email).first()
+    if not user:
+        flash('User with the provided email does not exist!', 'error')
+        return redirect(url_for('events_file.explore_events'))
+
+    # Check if event exists
+    event = Event.query.get(event_id)
+    if not event:
+        flash('Invalid event!', 'error')
+        return redirect(url_for('events_file.explore_events'))
+
+    # Check if the user is already registered for the event
+    existing_registration = Registration.query.filter_by(user_id=user.id, event_id=event_id).first()
+    if existing_registration:
+        flash('You are already registered for this event.', 'info')
+        return redirect(url_for('events_file.explore_events'))
+
+    # Register the user for the event
+    new_registration = Registration(user_id=user.id, event_id=event_id, remarks=remarks)
     db.session.add(new_registration)
     db.session.commit()
 
     flash('Successfully registered for the event!', 'success')
     return redirect(url_for('events_file.explore_events'))
 
-
 # Route: Display all registrations
 @events_file.route('/registrations', methods=['GET'])
 def view_registrations():
-    registrations = Registration.query.join(User).join(Event).add_columns(
-        User.name, User.email, Event.title, Registration.registration_date, Registration.status
-    ).all()
-    return render_template('view_registrations.html', registrations=registrations)
-
-
-# # Route: Register for an event from the event details page
-# @events_file.route('/register_event/<int:event_id>', methods=['POST'])
-# def register_event(event_id):
-#     name = request.form['name']
-#     email = request.form['email']
-#     phone = request.form['phone']
-
-#     # Validate input
-#     if not name or not email or not phone:
-#         flash('All fields are required!', 'error')
-#         return redirect(url_for('events_file.event_details', event_id=event_id))
-
-#     # Register user (example logic)
-#     new_user = User(name=name, email=email, phone_no=phone)
-#     db.session.add(new_user)
-#     db.session.commit()
-
-#     # Register user for the event
-#     new_registration = Registration(user_id=new_user.id, event_id=event_id)
-#     db.session.add(new_registration)
-#     db.session.commit()
-
-#     flash('Successfully registered for the event!', 'success')
-#     return redirect(url_for('events_file.explore_events'))
+    registrations = (
+        db.session.query(Registration, User.name, User.email, Event.title)
+        .join(User, Registration.user_id == User.id)
+        .join(Event, Registration.event_id == Event.id)
+        .all()
+    )
+    return render_template('view_registration.html', registrations=registrations)
 

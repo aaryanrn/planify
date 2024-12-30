@@ -137,6 +137,23 @@ def delete_event(event_id):
 
     return redirect(url_for('admin.manage_events'))
 
+@admin_blueprint.route('/edit_registration/<int:registration_id>', methods=['GET', 'POST'])
+def edit_registration(registration_id):
+    registration = Registration.query.get_or_404(registration_id)
+    if request.method == 'POST':
+        registration.remarks = request.form.get('remarks')  # Example edit
+        db.session.commit()
+        flash('Registration updated successfully!', 'success')
+        return redirect(url_for('events_file.view_registrations'))
+    return render_template('edit_registration.html', registration=registration)
+
+@admin_blueprint.route('/delete_registration/<int:registration_id>', methods=['POST'])
+def delete_registration(registration_id):
+    registration = Registration.query.get_or_404(registration_id)
+    db.session.delete(registration)
+    db.session.commit()
+    flash('Registration deleted successfully!', 'success')
+    return redirect(url_for('events_file.view_registrations'))
 
 # Admin Logout Route
 @admin_blueprint.route('/admin-logout')
