@@ -1,105 +1,94 @@
-/* Importing a new font for better typography */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
-
-/* Ensure the container spans closer to the page borders */
+/* General container styling */
 .container {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    width: 95%; /* Adjust width to cover more area */
-    margin: 0 auto; /* Center the container horizontally */
+    width: 92%; /* Slightly decrease width for overall layout */
+    margin: 0 auto;
     padding: 20px 0;
 }
 
-/* Styling for the Lorem Ipsum section */
+/* Left section styling */
 .lorem-section {
-    width: 40%;
-    padding: 10px 20px;
-    font-family: 'Lora', serif; /* Using the new Lora font */
-    background-color: #fdfdfd; /* Lighter background for better readability */
-    border-radius: 8px; /* Slight rounding of corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
-    color: #333; /* Dark text color for contrast */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Lora', serif;
+    color: #333;
 }
 
-/* Carousel section to fill space */
+/* Carousel Styling */
 .carousel {
-    width: 60%;
-    border-radius: 8px; /* Match border radius with Lorem Ipsum section */
+    position: relative;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Add shadow for uniformity */
-    border-radius: 12px; /* Slightly round the corners of the carousel */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 55%; /* Reduced width slightly */
+    height: 400px; /* Increased height for longer appearance */
 }
 
-/* Make images responsive and control aspect ratio */
-.carousel img {
+/* Carousel images */
+.carousel-image {
     width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 12px; /* Consistent border radius */
-    aspect-ratio: 16/9; /* Set a 16:9 aspect ratio */
-    object-position: center; /* Center the image */
+    height: 100%;
+    object-fit: contain; /* Maintain aspect ratio while fitting the container */
+    object-position: center;
+    transition: opacity 0.5s ease;
 }
 
-/* Buttons for carousel navigation */
+/* Carousel navigation buttons */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker button background */
-    border-radius: 50%; /* Circular navigation buttons */
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
 }
 
-/* Footer alignment adjustments */
+/* Footer Styling */
 footer {
-    margin-top: 10px; /* Reduce the top margin */
-    padding: 10px; /* Decrease padding for a smaller height */
-    background-color: #111; /* Darker footer background for modern look */
-    color: #ddd; /* Softer white text */
+    margin-top: 20px;
+    padding: 10px 0;
+    background-color: #111;
+    color: #ddd;
     text-align: center;
-    font-size: 12px; /* Reduce the font size */
-    line-height: 1.5; /* Adjust line spacing for compactness */
+    font-size: 14px;
 }
 
 .footer-link {
-    color: #ff9800; /* Accent color for links */
+    color: #ff9800;
     text-decoration: none;
     margin: 0 5px;
-    font-size: 12px; /* Match link font size with footer text */
 }
 
 .footer-link:hover {
     text-decoration: underline;
-    color: #ff6600; /* Slightly darker hover color for links */
+    color: #ff6600;
 }
 
-/* Responsive layout */
+/* Responsive Layout */
 @media (max-width: 768px) {
     .container {
         flex-direction: column;
-        width: 100%;
     }
 
     .lorem-section,
     .carousel {
         width: 100%;
-        margin-bottom: 20px; /* Add spacing between sections */
+        margin-bottom: 20px;
     }
-}
 
-/* Heading styling */
-h3.about-planify-heading {
-    font-size: 2.5em; /* Increase font size */
-    color: #ff3131; /* Color set to ##ff3131 */
-    font-weight: bold;
-    text-align: left; /* Align text to the left */
-    margin-bottom: 20px;
-    text-shadow: none; /* No shadow */
-}
+    .carousel {
+        height: 300px; /* Adjusted height for smaller screens */
+    }
 
-/* Paragraph styling */
-.lorem-section p {
-    font-family: 'Lora', serif; /* Using the new Lora font */
-    color: #333; /* Dark text for better readability */
-    font-size: 1.1em; /* Slightly larger text for readability */
-    line-height: 1.6; /* Spacing between lines for clarity */
-    margin-bottom: 20px; /* Adding space between paragraphs */
+    .carousel-image {
+        height: 100%;
+    }
 }
