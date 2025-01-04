@@ -10,15 +10,14 @@
     </div>
 
     <div class="admin_content">
+        
+
+        {%block content%}
         <div class="header">
             <h1>Admin Dashboard</h1>
         </div>
-
-
-
-        {%block content%}
         <section class="admin_section">
-            <h2>Statistics</h2>
+            <h2>Admin Statistics</h2>
             <p>Total Users: {{ users_count }}</p>
             <p>Total Events: {{ events_count }}</p>
             <p>Total Registrations: {{ registrations_count }}</p>

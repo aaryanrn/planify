@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% block body %}
-<link rel="stylesheet" href="{{ url_for('static', filename='users/admin_login.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='admin/admin_login.css') }}">
 
-<div class="container mt-5">
+<div class="container1 mt-5">
     <h2 class="text-center mb-4">Admin Login</h2>
     <form action="{{ url_for('admin.admin_login') }}" method="POST" class="login-form">
         <div class="mb-3">

@@ -1,77 +1,106 @@
-/* Container styling */
+/* General container styling */
 .container {
-    background: #ffffff; /* White background */
+    background: #ffffff; /* White background for contrast */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     border-radius: 8px;
     padding: 30px;
-    margin: 20px auto; /* Centered container with margin */
-    max-width: 1200px; /* Set max width for responsiveness */
-    width: 90%; /* Adapt to smaller screens */
+    margin: 20px auto; /* Centered with margin */
+    max-width: 1200px; /* Limit width for large screens */
+    width: 90%; /* Responsive width */
 }
 
-/* Title styling */
+/* Page title styling */
 h1 {
     text-align: center;
-    color: #343a40; /* Dark gray text */
+    color: #343a40; /* Dark gray for titles */
     font-weight: bold;
     margin-bottom: 20px;
+    font-size: 24px;
 }
 
 /* Table styling */
-.table {
-    margin-top: 20px;
+table {
+    width: 100%;
     border-collapse: collapse;
-    width: 100%; /* Full-width table */
-    background-color: #ffffff; /* White background */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for table */
-    border-radius: 8px; /* Rounded corners for the table */
-    overflow: hidden; /* Clip content for rounded corners */
+    margin-top: 20px;
+    background-color: #ffffff; /* Ensure a clean table background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle table shadow */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden;
 }
 
-/* Table header styling */
-.table thead {
-    background-color: #343a40; /* Dark header background */
-    color: #ffffff; /* White header text */
+thead {
+    background-color: #343a40; /* Dark background for header */
+    color: #ffffff; /* White text for header */
 }
 
-.table thead th {
+thead th {
     text-align: center;
     padding: 12px;
     font-size: 14px;
     font-weight: bold;
 }
 
-/* Table body styling */
-.table tbody tr {
+tbody tr {
     transition: background-color 0.3s ease;
 }
 
-.table tbody tr:hover {
+tbody tr:hover {
     background-color: #f1f1f1; /* Light gray hover effect */
 }
 
-.table tbody td {
+tbody td {
     text-align: center;
     padding: 12px 10px;
+    font-size: 14px;
     vertical-align: middle;
-    font-size: 14px; /* Slightly larger text for readability */
-}
-
-/* Date column styling */
-.table tbody tr td.date-column {
-    color: #007bff; /* Blue text for dates */
-    font-weight: bold;
-    white-space: nowrap; /* Prevent text wrapping */
-    padding-right: 20px; /* Spacing for content */
 }
 
 /* Event photo styling */
 .event-photo {
-    width: 80px; /* Reduced width for better alignment */
-    height: 80px; /* Consistent height */
+    width: 80px;
+    height: 80px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for images */
-    object-fit: cover; /* Crop and fit photos proportionally */
+    object-fit: cover;
+}
+
+/* Button Styling */
+.btn {
+    text-decoration: none;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Yellow for edit */
+    color: #000; /* Black text */
+    border: none;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800; /* Darker yellow */
+    transform: scale(1.05);
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red for delete */
+    color: #fff; /* White text */
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Darker red */
+    transform: scale(1.05);
+}
+
+/* Form inside table cell */
+form {
+    display: inline;
 }
 
 /* Styling for empty state */
@@ -83,27 +112,31 @@ h1 {
     font-size: 16px;
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     .container {
         padding: 20px;
     }
 
     h1 {
-        font-size: 22px;
+        font-size: 20px;
     }
 
-    .table thead th {
-        font-size: 12px;
+    table {
+        font-size: 12px; /* Reduce text size for smaller screens */
     }
 
-    .table tbody td {
-        font-size: 12px;
-        padding: 8px;
+    tbody td {
+        padding: 8px; /* Adjust padding for compact view */
     }
 
     .event-photo {
         width: 60px;
-        height: 60px;
+        height: 60px; /* Adjust image size for responsiveness */
+    }
+
+    .btn {
+        padding: 6px 10px; /* Adjust button size */
+        font-size: 10px;
     }
 }
