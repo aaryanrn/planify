@@ -254,45 +254,57 @@ footer a {
 
 /*nav bar starts here*/
 .nav-container {
-    position:absolute; /* Stick to the top of the viewport */
-    top: 10px; /* Adjust the distance from the top */
-    background-color: #0ce13a; /* Background color */
-    padding: 0px 84px; /* Add padding for spacing */
-    border: 2px solid #0bdf0b; /* Border color and thickness */
-    border-radius: 70px; /* Rounded corners */
-    box-shadow: 0px 4px 6px rgba(12, 124, 36, 0.1); /* Optional shadow */
-    width: 80%; /* Ensure responsive width */
-    max-width: 1200px; /* Limit the max width for larger screens */
-    margin: 0 auto; /* Center horizontally within the page */
-}
-
-.nav-container:hover {
-    background-color: rgb(17, 117, 37); /* Change background color to black on hover */
+    position: absolute; /* Stick to the top */
+    top: 10px;
+    background-color: transparent; /* No background */
+    padding: 0 50px; /* Add padding for spacing */
+    width: 100%; /* Take full width of the viewport */
+    max-width: 1200px; /* Restrict maximum width */
+    margin: 0 auto; /* Center the navbar */
+    display: flex; /* Use flexbox for layout */
+    justify-content: flex-end; /* Align items to the right */
+    align-items: center; /* Vertically center items */
+    box-shadow: none; /* No shadow */
 }
 
 .nav ul {
-    list-style: none; /* Remove bullet points */
+    list-style: none; /* Remove list bullets */
     padding: 0;
     margin: 0;
-    display: flex; /* Flex layout for nav items */
-    justify-content: center; /* Space nav items evenly */
-    gap: 20px; /* Add space between items */
+    display: flex; /* Flexbox layout for nav items */
+    gap: 200px;; /* Increased gap for more space between items */
 }
 
 .nav li {
-    flex: 1; /* Ensure items are evenly spaced */
+    flex: none; /* Prevent items from stretching */
 }
 
 .nav a {
     text-decoration: none; /* Remove underline */
-    color: #fff; /* Text color */
-    font-weight: bold; /* Make text bold */
-    font-size: 1.3rem; /* Font size */
-    padding: 8px 16px; /* Padding inside links */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    color: #000; /* Black text */
+    font-family: 'Poppins', sans-serif; /* Apply Poppins font */
+    font-weight: 500; /* Slightly lighter font weight */
+    font-size: 1.2rem; /* Slightly smaller font size for balance */
+    padding: 10px 15px; /* Padding for clickable area */
+    border-radius: 5px; /* Add subtle rounded corners */
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
 .nav a:hover {
-    background-color: #0bdf0b; /* Hover effect */
-    color: #000; /* Change text color on hover */
+    color: #555; /* Lighter shade for hover */
 }
+
+.nav a.active {
+    text-decoration: none; /* Remove underline for active link */
+    color: #000; /* Keep text color black */
+}
+.top-left {
+	position: absolute;
+	top: 20px; /* Adjust this value to move the text down */
+	left: 0;
+	padding: 10px;
+	font-size: 3em;
+	font-weight: bold;
+	color: rgb(0, 0, 0); /* Set the text color to black */
+}
+
