@@ -1,0 +1,105 @@
+/* Importing a new font for better typography */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap');
+
+/* Ensure the container spans closer to the page borders */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 95%; /* Adjust width to cover more area */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px 0;
+}
+
+/* Styling for the Lorem Ipsum section */
+.lorem-section {
+    width: 40%;
+    padding: 10px 20px;
+    font-family: 'Lora', serif; /* Using the new Lora font */
+    background-color: #fdfdfd; /* Lighter background for better readability */
+    border-radius: 8px; /* Slight rounding of corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    color: #333; /* Dark text color for contrast */
+}
+
+/* Carousel section to fill space */
+.carousel {
+    width: 60%;
+    border-radius: 8px; /* Match border radius with Lorem Ipsum section */
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Add shadow for uniformity */
+    border-radius: 12px; /* Slightly round the corners of the carousel */
+}
+
+/* Make images responsive and control aspect ratio */
+.carousel img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px; /* Consistent border radius */
+    aspect-ratio: 16/9; /* Set a 16:9 aspect ratio */
+    object-position: center; /* Center the image */
+}
+
+/* Buttons for carousel navigation */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.6); /* Slightly darker button background */
+    border-radius: 50%; /* Circular navigation buttons */
+}
+
+/* Footer alignment adjustments */
+footer {
+    margin-top: 10px; /* Reduce the top margin */
+    padding: 10px; /* Decrease padding for a smaller height */
+    background-color: #111; /* Darker footer background for modern look */
+    color: #ddd; /* Softer white text */
+    text-align: center;
+    font-size: 12px; /* Reduce the font size */
+    line-height: 1.5; /* Adjust line spacing for compactness */
+}
+
+.footer-link {
+    color: #ff9800; /* Accent color for links */
+    text-decoration: none;
+    margin: 0 5px;
+    font-size: 12px; /* Match link font size with footer text */
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: #ff6600; /* Slightly darker hover color for links */
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .lorem-section,
+    .carousel {
+        width: 100%;
+        margin-bottom: 20px; /* Add spacing between sections */
+    }
+}
+
+/* Heading styling */
+h3.about-planify-heading {
+    font-size: 2.5em; /* Increase font size */
+    color: #ff3131; /* Color set to ##ff3131 */
+    font-weight: bold;
+    text-align: left; /* Align text to the left */
+    margin-bottom: 20px;
+    text-shadow: none; /* No shadow */
+}
+
+/* Paragraph styling */
+.lorem-section p {
+    font-family: 'Lora', serif; /* Using the new Lora font */
+    color: #333; /* Dark text for better readability */
+    font-size: 1.1em; /* Slightly larger text for readability */
+    line-height: 1.6; /* Spacing between lines for clarity */
+    margin-bottom: 20px; /* Adding space between paragraphs */
+}

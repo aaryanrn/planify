@@ -72,7 +72,6 @@ button.ghost {
 }
 
 form {
-	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -252,59 +251,73 @@ footer a {
     text-decoration: none;
 }
 
-/*nav bar starts here*/
 .nav-container {
-    position: absolute; /* Stick to the top */
-    top: 10px;
-    background-color: transparent; /* No background */
-    padding: 0 50px; /* Add padding for spacing */
-    width: 100%; /* Take full width of the viewport */
-    max-width: 1200px; /* Restrict maximum width */
-    margin: 0 auto; /* Center the navbar */
-    display: flex; /* Use flexbox for layout */
-    justify-content: flex-end; /* Align items to the right */
-    align-items: center; /* Vertically center items */
-    box-shadow: none; /* No shadow */
+	position: absolute;
+	top: 10px;
+	background-color: transparent;
+	padding: 0 50px;
+	width: 100%;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	box-shadow: none;
 }
 
 .nav ul {
-    list-style: none; /* Remove list bullets */
-    padding: 0;
-    margin: 0;
-    display: flex; /* Flexbox layout for nav items */
-    gap: 200px;; /* Increased gap for more space between items */
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	gap: 40px;
 }
 
 .nav li {
-    flex: none; /* Prevent items from stretching */
+	flex: none;
 }
 
 .nav a {
-    text-decoration: none; /* Remove underline */
-    color: #000; /* Black text */
-    font-family: 'Poppins', sans-serif; /* Apply Poppins font */
-    font-weight: 500; /* Slightly lighter font weight */
-    font-size: 1.2rem; /* Slightly smaller font size for balance */
-    padding: 10px 15px; /* Padding for clickable area */
-    border-radius: 5px; /* Add subtle rounded corners */
-    transition: color 0.3s ease; /* Smooth color transition */
+	text-decoration: none;
+	color: #000;
+	font-family: 'Poppins', sans-serif;
+	font-weight: 500;
+	font-size: 1.2rem;
+	padding: 10px 15px;
+	border-radius: 5px;
+	transition: color 0.3s ease;
 }
 
 .nav a:hover {
-    color: #555; /* Lighter shade for hover */
+	color: #555;
 }
 
 .nav a.active {
-    text-decoration: none; /* Remove underline for active link */
-    color: #000; /* Keep text color black */
+	text-decoration: none;
+	color: #000;
 }
+
 .top-left {
 	position: absolute;
-	top: 20px; /* Adjust this value to move the text down */
-	left: 0;
+	top: 20px;
+	left: 20px;
 	padding: 10px;
-	font-size: 3em;
+	font-size: 2em; /* Reduced font size */
 	font-weight: bold;
-	color: rgb(0, 0, 0); /* Set the text color to black */
+	color: rgb(0, 0, 0);
 }
+
+.logo {
+	position: absolute;
+	top: -55px;
+	left: -180px; /* Adjusted further to the left */
+	height: 200px; /* Increased the size for better visibility */
+	width: auto;
+	object-fit: contain;
+}
+
+
+
+
+
 
