@@ -1,127 +1,57 @@
-/*css for carasoule is here*/
-.navbar {
-    z-index: 10; /* Keeps navbar above the carousel */
-    position: sticky; /* Keep navbar at the top */
-    top: 0;
-    width: 100%;
-}
-
-/* Carousel specific styles */
-#carouselExampleAutoplaying {
-    margin-top: 180px; /* Adjust to navbar height, assuming navbar height is 70px */
-    margin-bottom: 50px; /* Adjust this value to leave space for the footer */
-    position: relative;
-}
-
-/* Ensure the images in carousel stretch to fit their container */
-.carousel-inner img {
-    width: 100%;
-    height: 75vh; /* Make the carousel images take full viewport height */
-    object-fit: cover; /* Maintain aspect ratio while covering the area */
-}
-
-/* Optional: Add a shadow to the carousel for better visibility */
-.carousel {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Make carousel responsive */
-@media (max-width: 767px) {
-    #carouselExampleAutoplaying {
-        margin-top: 50px; /* Less margin on smaller screens */
-    }
-}
-
-/*CSS for footer*/
-/* Footer Styles */
-footer {
-    background-color: #222; /* Dark background */
-    color: white; /* White text color */
-    text-align: center; /* Center the text */
-    padding: 4px 0; /* Small padding for compactness */
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    font-size: 14px; /* Smaller text size */
-}
-
-/* Link styling inside footer */
-footer .footer-link {
-    color: #3c97bf; /* Light blue color for links */
-    text-decoration: none; /* Remove underline */
-    margin: 0 8px; /* Add spacing between links */
-}
-
-footer .footer-link:hover {
-    text-decoration: underline; /* Underline on hover */
-    color: #fff; /* White color on hover */
-}
-
-/* Optional: For responsiveness, ensure footer fits well on smaller screens */
-@media (max-width: 767px) {
-    footer {
-        font-size: 12px; /* Smaller text on mobile */
-    }
-}
-
-
 /* General styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f8fff5;
+    background-color: #fff8e6; /* Cream background */
     margin: 0;
     padding: 0;
 }
 
 /* Header */
 .event-container {
-    margin-top: 5px;  /* Increased margin-top to bring cards down by 3-4 cm */
-    /* padding: 20px; */
-}
-
-.event-container h1 {
-    text-align:center;
-    color: #131513;
-    margin-bottom: 100px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    padding: 0 20px;
 }
 
 /* Event Cards Container */
 .event-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 2%; /* Occupying 80% of the screen */
-    gap: 20px; /* Maintain a uniform gap between cards */
-    width: 1400px;
+    gap: 25px;
+    max-width: 1400px;
+    justify-content: center;
 }
 
 /* Individual Event Card */
 .event-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    flex: 0 0 calc(25% - 20px); /* Exactly 4 cards per row */
-    margin-bottom: 20px;
-    max-width: calc(25% - 20px); /* Prevent exceeding row width */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 0 0 calc(40% - 25px); /* Expanded width for cards */
     display: flex;
-    flex-direction: column; /* Arrange content in a column */
+    flex-direction: column;
+}
+
+.event-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Event Image Placeholder */
 .event-image-placeholder {
-    background-color: #ccc;
+    background-color: #ddd;
     height: 200px;
     width: 100%;
     overflow: hidden;
 }
 
-/* Image */
 .event-card img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensure image covers the placeholder */
+    object-fit: cover;
 }
 
 /* Event Details */
@@ -129,95 +59,67 @@ body {
     padding: 15px;
     text-align: center;
     display: flex;
-    flex-direction: column; /* Stack title, desc, and date vertically */
+    flex-direction: column;
     justify-content: space-between;
-    flex-grow: 1; /* Ensure this section takes up remaining space */
-}
-
-/* Event Short Description */
-.event-details p {
-    color: #333;
-    margin: 0 0 10px 0;
-    font-size: 14px;
-    line-height: 1.5;
-}
-
-/* Event Date */
-.event-details .date {
-    color: #777;
-    font-size: 12px;
-    margin-top: auto; /* Push date to the bottom */
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 992px) {
-    .event-card {
-        flex: 0 0 calc(33.33% - 20px); /* 3 cards in a row for medium screens */
-        max-width: calc(33.33% - 20px);
-    }
-}
-
-@media (max-width: 768px) {
-    .event-card {
-        flex: 0 0 calc(50% - 20px); /* 2 cards in a row for small screens */
-        max-width: calc(50% - 20px);
-    }
-}
-
-@media (max-width: 576px) {
-    .event-card {
-        flex: 0 0 100%; /* 1 card per row for extra small screens */
-        max-width: 100%;
-    }
-}
-
-/* Hover Effect */
-.event-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Event Image Placeholder */
-.event-image-placeholder {
-    background-color: #ccc;
-    height: 200px;
-    width: 100%;
-}
-
-/* Event Details */
-.event-details {
-    padding: 15px;
-    text-align: center;
+    flex-grow: 1;
 }
 
 .event-details h3 {
     color: #0a0c0a;
     margin-bottom: 10px;
-    font-size: 18px; /* Ensuring text is not too large */
+    font-size: 20px;
 }
 
 .event-details p {
-    color: #333;
+    color: #333333;
     margin: 0 0 10px 0;
-    font-size: 14px; /* Consistent paragraph text size */
-    line-height: 1.5; /* Better readability */
+    font-size: 14px;
+    line-height: 1.6;
 }
 
-.register-button {
+.event-details .date {
+    color: #444;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: auto;
+    background-color: #f7ead9; /* Light cream highlight */
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.details-link {
     display: inline-block;
     padding: 10px 20px;
-    margin-top: 10px;
-    background-color: #081208;
-    color: white;
+    background-color: #222222; /* Black background */
+    color: #fff8e6; /* Cream text */
     text-decoration: none;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    font-size: 14px;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.register-button:hover {
-    background-color: #0ddf0d;
+.details-link:hover {
+    background-color: #444444; /* Darker black on hover */
+    transform: translateY(-2px); /* Slight lift on hover */
 }
 
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .event-card {
+        flex: 0 0 calc(33.33% - 25px);
+    }
+}
 
+@media (max-width: 768px) {
+    .event-card {
+        flex: 0 0 calc(50% - 25px);
+    }
+}
 
-
+@media (max-width: 576px) {
+    .event-card {
+        flex: 0 0 100%;
+    }
+}

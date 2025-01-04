@@ -29,7 +29,7 @@
                     <p class="date">{{ event.date.strftime('%Y-%m-%d %H:%M:%S') }}</p>
 
                     <!-- Link to Event Details Page -->
-                    <a href="{{ url_for('events_file.event_details', event_id=event.id) }}">View Details</a>
+                    <a href="{{ url_for('events_file.event_details', event_id=event.id) }}" class="details-link">View Details</a>
                 </div>
             </div>
             {% endfor %}

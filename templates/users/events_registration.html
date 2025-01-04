@@ -24,9 +24,17 @@
             <div class="form-group">
                 <label for="remarks">Remarks (Optional)</label>
                 <textarea id="remarks" name="remarks" placeholder="Any additional comments"></textarea>
+                <a
+                href="#"
+                id="register-link"
+                onclick="document.getElementById('register-form').submit();"
+                class="submit-btn"
+            >
+                Register
+            </a>
             </div>
-        
-            <button type="submit" class="submit-btn">Register</button>
+          
+            <!-- <button type="submit" class="submit-btn">Register</button> -->
         </form>        
     </div>
 {% endblock body %}

@@ -24,12 +24,12 @@ def event_registration_page(event_id):
         return redirect(url_for('events_file.explore_events'))
     return render_template('users/events_registration.html', event=event)
 
-@events_file.route('/register_event', methods=['POST'])
+@events_file.route('/register_event', methods=['GET'])
 def register_event_user():
-    # Extract form data
-    email = request.form.get('email')  # Use email to find the user
-    event_id = request.form.get('event_id')
-    remarks = request.form.get('remarks', '')
+    # Extract query parameters
+    email = request.args.get('email')  # Use email to find the user
+    event_id = request.args.get('event_id')
+    remarks = request.args.get('remarks', '')
 
     # Validate required fields
     if not (email and event_id):
