@@ -75,14 +75,14 @@ body {
 
 /* Header */
 .event-container {
-    margin-top: 250px;  /* Increased margin-top to bring cards down by 3-4 cm */
-    padding: 20px;
+    margin-top: 5px;  /* Increased margin-top to bring cards down by 3-4 cm */
+    /* padding: 20px; */
 }
 
 .event-container h1 {
-    text-align: center;
-    color: #006400;
-    margin-bottom: 20px;
+    text-align:center;
+    color: #131513;
+    margin-bottom: 100px;
 }
 
 /* Event Cards Container */
@@ -132,15 +132,6 @@ body {
     flex-direction: column; /* Stack title, desc, and date vertically */
     justify-content: space-between;
     flex-grow: 1; /* Ensure this section takes up remaining space */
-}
-
-/* Event Title */
-.event-details h3 {
-    color: #006400;
-    margin-bottom: 10px;
-    font-size: 18px;
-    font-weight: bold; /* Make title bold */
-    text-transform: capitalize; /* Ensure title is formatted properly */
 }
 
 /* Event Short Description */
@@ -200,7 +191,7 @@ body {
 }
 
 .event-details h3 {
-    color: #006400;
+    color: #0a0c0a;
     margin-bottom: 10px;
     font-size: 18px; /* Ensuring text is not too large */
 }
@@ -216,7 +207,7 @@ body {
     display: inline-block;
     padding: 10px 20px;
     margin-top: 10px;
-    background-color: #006400;
+    background-color: #081208;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -224,7 +215,7 @@ body {
 }
 
 .register-button:hover {
-    background-color: #004d00;
+    background-color: #0ddf0d;
 }
 
 

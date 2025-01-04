@@ -36,7 +36,18 @@ def admin_login():
 @admin_blueprint.route('/admin-dashboard')
 @admin_login_required
 def admin_dashboard():
-    return render_template('admin/admin_dashboard.html')
+    # Calculate statistics
+    users_count = User.query.count()
+    events_count = Event.query.count()
+    registrations_count = Registration.query.count()
+
+    # Pass statistics to the template
+    return render_template(
+        'admin/admin_dashboard.html',
+        users_count=users_count,
+        events_count=events_count,
+        registrations_count=registrations_count
+    )
 
 #admin create event route
 @admin_blueprint.route('/create-events', methods=['GET', 'POST'])
