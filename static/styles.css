@@ -45,18 +45,27 @@ a {
 	margin: 15px 0;
 }
 
-button {
-	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
-	color: #FFFFFF;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
+.submit-btn {
+	border-radius: 20px; /* Rounded corners for a friendly look */
+	border: 2px solid #E57373; /* Soft red border */
+	background-color: #FFCDD2; /* Light reddish background */
+	color: #B71C1C; /* Deep red text for contrast */
+	font-size: 14px; /* Slightly larger font for visibility */
+	font-weight: bold; /* Bold for emphasis */
+	padding: 12px 45px; /* Comfortable padding */
+	letter-spacing: 1px; /* Elegant spacing */
+	text-transform: uppercase; /* Uniform look */
+	transition: all 0.2s ease-in-out; /* Smooth hover effect */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
+
+.submit-btn:hover {
+	background-color: #E57373; /* Brighter red on hover */
+	color: #FFFFFF; /* White text for strong contrast */
+	transform: scale(1.05); /* Slight zoom effect on hover */
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
 
 button:active {
 	transform: scale(0.95);

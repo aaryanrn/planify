@@ -1,23 +1,34 @@
-
-/*css for manage events table*/
 /* Container styling */
 .container {
-    background: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: #ffffff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
     border-radius: 8px;
     padding: 30px;
-    margin-left: 200px;
-    width: 1200px; /* Set a fixed width for the container */
+    margin: 20px auto; /* Centered container with margin */
+    max-width: 1200px; /* Set max width for responsiveness */
+    width: 90%; /* Adapt to smaller screens */
+}
+
+/* Title styling */
+h1 {
+    text-align: center;
+    color: #343a40; /* Dark gray text */
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 /* Table styling */
 .table {
     margin-top: 20px;
     border-collapse: collapse;
-    width: 100%;
-    background-color: #ffffff;
+    width: 100%; /* Full-width table */
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Subtle shadow for table */
+    border-radius: 8px; /* Rounded corners for the table */
+    overflow: hidden; /* Clip content for rounded corners */
 }
 
+/* Table header styling */
 .table thead {
     background-color: #343a40; /* Dark header background */
     color: #ffffff; /* White header text */
@@ -25,12 +36,14 @@
 
 .table thead th {
     text-align: center;
-    padding: 10px;
+    padding: 12px;
+    font-size: 14px;
+    font-weight: bold;
 }
 
+/* Table body styling */
 .table tbody tr {
-    transition: background-color 0.3s;
-    height: 80px;
+    transition: background-color 0.3s ease;
 }
 
 .table tbody tr:hover {
@@ -41,38 +54,56 @@
     text-align: center;
     padding: 12px 10px;
     vertical-align: middle;
+    font-size: 14px; /* Slightly larger text for readability */
 }
 
-/* Styling for the date column */
+/* Date column styling */
 .table tbody tr td.date-column {
     color: #007bff; /* Blue text for dates */
     font-weight: bold;
-    height: 80px; /* Increased row height */
     white-space: nowrap; /* Prevent text wrapping */
-    padding-right: 20px; /* Add right padding for spacing */
-    text-align: center; /* Center align text */
+    padding-right: 20px; /* Spacing for content */
 }
 
+/* Event photo styling */
+.event-photo {
+    width: 80px; /* Reduced width for better alignment */
+    height: 80px; /* Consistent height */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for images */
+    object-fit: cover; /* Crop and fit photos proportionally */
+}
 
 /* Styling for empty state */
 .no-events {
     margin-top: 20px;
     text-align: center;
-    color: #6c757d; /* Subtle gray color */
+    color: #6c757d; /* Subtle gray text */
     font-style: italic;
+    font-size: 16px;
 }
 
-/* Title styling */
-h1 {
-    text-align: center;
-    color: #343a40;
-    font-weight: bold;
-}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
 
-.event-photo {
-    width: 100px;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    object-fit: cover;
+    h1 {
+        font-size: 22px;
+    }
+
+    .table thead th {
+        font-size: 12px;
+    }
+
+    .table tbody td {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .event-photo {
+        width: 60px;
+        height: 60px;
+    }
 }

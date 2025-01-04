@@ -1,4 +1,5 @@
 /* General container styling */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap'); /* Import Lora font */
 .container {
     display: flex;
     justify-content: space-between;

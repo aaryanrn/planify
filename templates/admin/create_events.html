@@ -2,6 +2,8 @@
 {% extends "admin/admin_dashboard.html" %}
 
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='admin/create_events.css') }}">
+
 <div class="container mt-4">
     <h2>Create Event</h2>
     <form method="POST" action="{{ url_for('admin.create_events') }}" enctype="multipart/form-data">

@@ -14,7 +14,7 @@ body {
 /* Registration Container */
 .registration-container {
     background: #fff; /* White card background */
-    padding: 30px;
+    padding: 35px;
     border-radius: 10px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     max-width: 450px; /* Slightly wider for better spacing */
