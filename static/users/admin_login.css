@@ -1,0 +1,86 @@
+/* Import a custom font for better presentation */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Global styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for login form */
+.container {
+  max-width: 400px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 80px;
+}
+
+/* Heading styles */
+h2 {
+  font-size: 1.8em;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+/* Styling for form elements */
+.form-label {
+  font-weight: 500;
+  color: #555;
+}
+
+.form-control {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  padding: 12px;
+  font-size: 1em;
+  width: 100%;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Button styling - RED */
+.btn-primary {
+  background-color: #dc3545; /* Red color */
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: white;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.btn-primary:hover {
+  background-color: #bd2130; /* Darker red on hover */
+}
+
+/* Styling for alert messages */
+.alert {
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+/* Responsive layout */
+@media (max-width: 576px) {
+  .container {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  .btn-primary {
+    font-size: 1.1em;
+  }
+}
