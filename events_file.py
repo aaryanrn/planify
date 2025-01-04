@@ -10,6 +10,11 @@ def explore_events():
     events_list = Event.query.all()  # Fetch events from the database
     return render_template('users/events.html', events=events_list)
 
+# Define the route for the About Us page
+@events_file.route('/about-us')
+def about_us():
+    return render_template('users/contact_us.html')
+
 # Route: Display event details
 @events_file.route('/events_details/<int:event_id>', methods=['GET'])
 def event_details(event_id):
