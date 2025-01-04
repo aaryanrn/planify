@@ -16,14 +16,12 @@ body {
 	margin: -20px 0 50px;
 }
 
-h1 {
-	font-weight: bold;
-	margin: 0;
-	padding-bottom: 10px;
-}
-
-h2 {
-	text-align: center;
+/* Adjust text overlap for titles */
+h1, h2 {
+    margin: 0;
+    padding: 10px;
+    font-size: 24px; /* Ensures text is not too large */
+    text-align: center;
 }
 
 p {
@@ -66,6 +64,27 @@ a {
 	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
+button {
+	border-radius: 20px; /* Rounded corners for a friendly look */
+	border: 2px solid #E57373; /* Soft red border */
+	background-color: #FFCDD2; /* Light reddish background */
+	color: #B71C1C; /* Deep red text for contrast */
+	font-size: 14px; /* Slightly larger font for visibility */
+	font-weight: bold; /* Bold for emphasis */
+	padding: 12px 45px; /* Comfortable padding */
+	letter-spacing: 1px; /* Elegant spacing */
+	text-transform: uppercase; /* Uniform look */
+	transition: all 0.2s ease-in-out; /* Smooth hover effect */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+button:hover {
+	background-color: #E57373; /* Brighter red on hover */
+	color: #FFFFFF; /* White text for strong contrast */
+	transform: scale(1.05); /* Slight zoom effect on hover */
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
 
 button:active {
 	transform: scale(0.95);
@@ -91,11 +110,12 @@ form {
 }
 
 input {
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
-	width: 100%;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc; /* Subtle border for clarity */
+    padding: 12px 15px;
+    margin: 8px 0;
+    border-radius: 5px;
+    width: 90%; /* Adjust width to fit nicely */
 }
 
 .container {
@@ -118,27 +138,29 @@ input {
 }
 
 .sign-in-container {
-	left: 0;
-	width: 50%;
-	z-index: 2;
+    left: 0; /* Positioned on the left side */
+    width: 50%;
+    z-index: 2;
+    transition: all 0.6s ease-in-out;
 }
 
 .container.right-panel-active .sign-in-container {
-	transform: translateX(100%);
+    transform: translateX(-100%); /* Slides out of view when inactive */
 }
 
 .sign-up-container {
-	left: 0;
-	width: 50%;
-	opacity: 0;
-	z-index: 1;
+    left: 50%; /* Positioned to the right side initially */
+    width: 50%; /* Matches half of the container width */
+    opacity: 0; /* Hidden by default */
+    z-index: 1;
+    transition: all 0.6s ease-in-out;
+    transform: translateX(-100%); /* Keeps it off-screen initially */
 }
 
 .container.right-panel-active .sign-up-container {
-	transform: translateX(100%);
-	opacity: 1;
-	z-index: 5;
-	animation: show 0.6s;
+    transform: translateX(0); /* Slides into view when active */
+    opacity: 1;
+    z-index: 5;
 }
 
 @keyframes show {
@@ -154,16 +176,15 @@ input {
 }
 
 .overlay-container {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 50%;
-	height: 100%;
-	overflow: hidden;
-	transition: transform 0.6s ease-in-out;
-	z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 50%; /* Starts halfway across the container */
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
 }
-
 .container.right-panel-active .overlay-container{
 	transform: translateX(-100%);
 }
@@ -189,35 +210,35 @@ input {
 }
 
 .overlay-panel {
-	position: absolute;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 40px;
-	text-align: center;
-	top: 0;
-	height: 100%;
-	width: 50%;
-	transform: translateX(0);
-	transition: transform 0.6s ease-in-out;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
 }
 
 .overlay-left {
-	transform: translateX(-20%);
+    transform: translateX(-20%);
 }
 
 .container.right-panel-active .overlay-left {
-	transform: translateX(0);
+    transform: translateX(0);
 }
 
 .overlay-right {
-	right: 0;
-	transform: translateX(0);
+    right: 0;
+    transform: translateX(0);
 }
 
 .container.right-panel-active .overlay-right {
-	transform: translateX(20%);
+    transform: translateX(20%);
 }
 
 .social-container {
@@ -307,13 +328,10 @@ footer a {
 }
 
 .top-left {
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	padding: 10px;
-	font-size: 2em; /* Reduced font size */
-	font-weight: bold;
-	color: rgb(0, 0, 0);
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-left: 20px;
+    color: #333;
 }
 
 .logo {
