@@ -1,41 +1,48 @@
 /* General container styling */
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap'); /* Import Lora font */
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 92%; /* Slightly decrease width for overall layout */
-    margin: 0 auto;
-    padding: 20px 0;
+
+/* Fix for ensuring scroll works */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-/* Left section styling */
-.lorem-section {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    font-family: 'Lora', serif;
-    color: #333;
+/* Main container to allow scrolling */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 56px; /* Adjust space to avoid overlap with navbar */
+    padding: 0;
+    overflow-y: auto; /* Enables scrolling if the content exceeds screen height */
+    height: auto; /* Let content define the height */
 }
 
 /* Carousel Styling */
+.carousel-container {
+    width: 100%;
+    /* Adds some space from the top */
+    margin-bottom: 40px; /* Space between carousel and details section */
+}
+
 .carousel {
     position: relative;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    width: 55%; /* Reduced width slightly */
-    height: 400px; /* Increased height for longer appearance */
+    width: 80%; /* Carousel occupies 80% of the screen */
+    height: 450px; /* Increased height for better visuals */
+    margin: 0 auto; /* Centered horizontally */
+    margin-top: 60px; /* Move the carousel a bit down from top */
 }
 
-/* Carousel images */
 .carousel-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Maintain aspect ratio while fitting the container */
+    object-fit: cover; /* Maintain aspect ratio while filling the container */
     object-position: center;
-    transition: opacity 0.5s ease;
 }
 
 /* Carousel navigation buttons */
@@ -50,16 +57,52 @@
     align-items: center;
     font-size: 20px;
     color: white;
+    background-color: transparent;
 }
+
+
+/* Details Section */
+.details-section {
+    width: 80%; /* Width adjusted for better alignment */
+    padding: 30px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 30px; /* Space between carousel and details section */
+    font-family: 'Lora', serif;
+    color: #333;
+    box-shadow: none;
+    background: none;
+}
+
+.about-heading {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.details-section p {
+    line-height: 1.6;
+    font-size: 16px;
+}
+
 
 /* Footer Styling */
 footer {
+    position: relative;
     margin-top: 20px;
     padding: 10px 0;
     background-color: #111;
     color: #ddd;
     text-align: center;
     font-size: 14px;
+    width: 100%;
+    clear: both; /* Ensure footer is placed after all content */
+}
+
+.footer-content p {
+    margin: 5px 0;
 }
 
 .footer-link {
@@ -75,21 +118,17 @@ footer {
 
 /* Responsive Layout */
 @media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-    }
-
-    .lorem-section,
     .carousel {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-
-    .carousel {
+        width: 100%; /* Full width for smaller screens */
         height: 300px; /* Adjusted height for smaller screens */
     }
 
-    .carousel-image {
-        height: 100%;
+    .details-section {
+        width: 95%; /* Wider for mobile devices */
+        padding: 20px;
+    }
+
+    .footer-content {
+        font-size: 12px;
     }
 }
