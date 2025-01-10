@@ -1,35 +1,33 @@
 /* General Styles */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #fdf6e3; /* Soft cream background */
-    color: #000; /* Black text */
-    margin: 0;
+    background-color: #fdf6e3; /* Light cream background */
+    color: #333; /* Dark gray text */
+    margin: 0px;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; /* Center content on smaller screens */
 }
 
-/* Container */
+/* Container Styling */
 .container {
-    background: #fff; /* White background for the form card */
-    padding: 30px;
-    border-radius: 10px;
+    margin-right: 100px;
+    background: #ffffff; /* White background for the form card */
+    padding: 20px;
+    border-radius: 15px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    max-width: 600px;
-    width: 90%; /* Responsive for smaller screens */
+    max-width: 700px;
+    width: 100%; /* Responsive for smaller screens */
 }
 
-/* Heading */
+/* Heading Styling */
 h2 {
-    font-size: 28px;
+    font-size: 32px;
     margin-bottom: 20px;
     font-weight: bold;
     text-align: center;
+    color: #2c3e50; /* Deep blue-gray */
 }
 
-/* Form Styles */
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
@@ -40,41 +38,54 @@ form {
 }
 
 .form-label {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #000;
+    color: #444; /* Darker gray */
+    display: inline-block; /* Ensures the label takes up the specified width */
+    width: 350px; /* Adjust to your preferred width */
+    margin: 10px; /* Add some space between the label and input */
 }
 
 .form-control {
     width: 100%;
-    padding: 12px;
+    padding: 15px;
     font-size: 15px;
     border: 1px solid #ddd;
-    border-radius: 6px;
+    border-radius: 8px;
     box-sizing: border-box;
-    background: #fdf6e3;
-    color: #000;
+    background: #fdf6e3; /* Light cream for input background */
+    color: #333;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .form-control:focus {
     border-color: #007bff; /* Blue border on focus */
-    box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
     outline: none;
 }
 
 textarea {
     resize: vertical;
-    height: 100px;
+    height: auto;
 }
 
-/* Submit Button */
+/* File Input Styling */
+input[type="file"] {
+    padding: 10px;
+    font-size: 14px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: #333;
+}
+
+/* Submit Button Styling */
 .btn-primary {
     margin-top: 20px;
-    background-color: #000; /* Black button background */
+    background-color: #2c3e50; /* Deep blue-gray */
     color: #fff;
-    padding: 12px 27px;
+    padding: 15px;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
@@ -85,17 +96,24 @@ textarea {
 }
 
 .btn-primary:hover {
-    background-color: #333;
+    background-color: #1a252f; /* Darker shade on hover */
     transform: scale(1.05); /* Subtle hover effect */
 }
 
-/* File Input */
-input[type="file"] {
-    padding: 8px;
-    font-size: 14px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+/* Add subtle animations */
+form input, form textarea {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Responsive Adjustments */
@@ -114,6 +132,6 @@ input[type="file"] {
 
     .btn-primary {
         font-size: 15px;
-        padding: 10px;
+        padding: 12px;
     }
 }
