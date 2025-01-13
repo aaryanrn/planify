@@ -34,7 +34,7 @@ body, html {
     width: 80%; /* Carousel occupies 80% of the viewport width */
     height: 450px; /* Height optimized for visuals */
     margin: 0 auto; /* Centered horizontally */
-    margin-top: 60px; /* Slight margin from the top */
+    margin-top: 4rem; /* Slight margin from the top */
 }
 
 .carousel-image {
