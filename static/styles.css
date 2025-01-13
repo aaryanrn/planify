@@ -256,7 +256,7 @@ input {
 	width: 40px;
 }
 
-footer {
+/* footer {
     background-color: #222;
     color: #fff;
     font-size: 14px;
@@ -266,7 +266,7 @@ footer {
     right: 0;
     text-align: center;
     z-index: 999;
-}
+} */
 
 footer p {
     margin: 10px 0;
@@ -342,7 +342,57 @@ footer a {
 	width: auto;
 	object-fit: contain;
 }
+/* Footer Styling */
+footer {
+    position: relative;
+    margin-top: 20px;
+    padding: 10px 0;
+	padding-left: 100px;
+	padding-right: 100px;
+    background-color: #111;
+    color: #ddd;
+    text-align: center;
+    font-size: 14px;
+    width: 100%;
+    clear: both; /* Ensures footer is placed after all content */
+}
 
+footer.visible {
+    visibility: visible; /* Show footer when scrolling down */
+    opacity: 1; /* Fade-in effect */
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+.footer-link {
+    color: #ff9800;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: #ff6600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .carousel {
+        width: 100%; /* Full width on smaller screens */
+        height: 300px; /* Adjusted height for better appearance */
+    }
+
+    .details-section {
+        width: 95%; /* Almost full width for smaller screens */
+        padding: 20px;
+    }
+
+    .footer-content {
+        font-size: 12px; /* Smaller text for compact design */
+    }
+}
 
 
 
