@@ -293,6 +293,7 @@ footer a {
 	justify-content: center;
 	align-items: center;
 	box-shadow: none;
+	z-index: 1000;
 }
 
 .nav ul {
