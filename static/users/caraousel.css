@@ -1,30 +1,29 @@
-/* General container styling */
-@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap'); /* Import Lora font */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&display=swap'); /* Lora font */
 
-/* Fix for ensuring scroll works */
+/* Global Styles */
 body, html {
     height: 100%;
     margin: 0;
     padding: 0;
 }
 
-/* Main container to allow scrolling */
+/* Main Container */
 .main-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    margin-top: 56px; /* Adjust space to avoid overlap with navbar */
+    margin-top: 345px; /* Adjust to prevent overlap with navbar */
     padding: 0;
-    overflow-y: auto; /* Enables scrolling if the content exceeds screen height */
-    height: auto; /* Let content define the height */
+    overflow-y: auto; /* Enables scrolling for content overflow */
+    height: auto; /* Let the content define the height */
 }
 
 /* Carousel Styling */
 .carousel-container {
     width: 100%;
-    /* Adds some space from the top */
-    margin-bottom: 40px; /* Space between carousel and details section */
+    margin-bottom: 40px; /* Space between carousel and details */
 }
 
 .carousel {
@@ -32,20 +31,20 @@ body, html {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    width: 80%; /* Carousel occupies 80% of the screen */
-    height: 450px; /* Increased height for better visuals */
+    width: 80%; /* Carousel occupies 80% of the viewport width */
+    height: 450px; /* Height optimized for visuals */
     margin: 0 auto; /* Centered horizontally */
-    margin-top: 60px; /* Move the carousel a bit down from top */
+    margin-top: 60px; /* Slight margin from the top */
 }
 
 .carousel-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Maintain aspect ratio while filling the container */
+    object-fit: cover; /* Ensures the image fills the container without distortion */
     object-position: center;
 }
 
-/* Carousel navigation buttons */
+/* Carousel Navigation Buttons */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     width: 50px;
@@ -60,13 +59,13 @@ body, html {
     background-color: transparent;
 }
 
-button{
+button {
     background-color: transparent;
     border: none;
     box-shadow: none;
 }
 
-button:hover{
+button:hover {
     background-color: transparent;
     border: none;
     box-shadow: none;
@@ -74,12 +73,12 @@ button:hover{
 
 /* Details Section */
 .details-section {
-    width: 80%; /* Width adjusted for better alignment */
+    width: 80%; /* Aligned for readability */
     padding: 30px;
     background-color: #f9f9f9;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    margin-top: 30px; /* Space between carousel and details section */
+    margin-top: 30px; /* Space between carousel and details */
     font-family: 'Lora', serif;
     color: #333;
     box-shadow: none;
@@ -98,7 +97,6 @@ button:hover{
     font-size: 16px;
 }
 
-
 /* Footer Styling */
 footer {
     position: relative;
@@ -109,7 +107,12 @@ footer {
     text-align: center;
     font-size: 14px;
     width: 100%;
-    clear: both; /* Ensure footer is placed after all content */
+    clear: both; /* Ensures footer is placed after all content */
+}
+
+footer.visible {
+    visibility: visible; /* Show footer when scrolling down */
+    opacity: 1; /* Fade-in effect */
 }
 
 .footer-content p {
@@ -127,19 +130,19 @@ footer {
     color: #ff6600;
 }
 
-/* Responsive Layout */
+/* Responsive Design */
 @media (max-width: 768px) {
     .carousel {
-        width: 100%; /* Full width for smaller screens */
-        height: 300px; /* Adjusted height for smaller screens */
+        width: 100%; /* Full width on smaller screens */
+        height: 300px; /* Adjusted height for better appearance */
     }
 
     .details-section {
-        width: 95%; /* Wider for mobile devices */
+        width: 95%; /* Almost full width for smaller screens */
         padding: 20px;
     }
 
     .footer-content {
-        font-size: 12px;
+        font-size: 12px; /* Smaller text for compact design */
     }
 }

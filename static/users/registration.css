@@ -35,6 +35,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    padding-bottom: 40px
 }
 
 .form-group {
@@ -76,24 +77,19 @@ textarea {
 }
 
 /* Submit Link/Button Styles */
-a.submit-btn {
-    display: inline-block;
-    text-decoration: none;
-    background-color: #000; /* Black background */
-    color: #fff; /* White text */
-    padding: 12px 110px; /* Slightly larger padding for better clickability */
-    border-radius: 65px; /* Rounded corners */
-    font-size: 16px; /* Larger text */
-    text-align: center;
-    font-weight: bold; /* Emphasize button text */
-    transition: background-color 0.3s ease, transform 0.2s ease;
+button {
+    border-radius: 20px;
+    border: 2px solid #E57373;
+    background-color: #FFCDD2;
+    color: #B71C1C;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 45px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-a.submit-btn:hover {
-    background-color: #333; /* Darker black on hover */
-    transform: scale(1.05); /* Subtle zoom effect */
-}
-
 /* Required Field Indicator */
 .required {
     color: #d9534f; /* Red to indicate required fields */
