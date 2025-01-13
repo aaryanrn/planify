@@ -28,20 +28,23 @@ body {
 
 /* Event Image */
 .event-image-placeholder {
-    width: 100%;
+    width: 70%;
     height: auto; /* Adjust to maintain aspect ratio */
-    max-height: 300px; /* Limit maximum height */
+    max-height: 300px; /* Reduce maximum height */
     background-color: #e0e0e0;
     margin-bottom: 20px;
     border-radius: 10px;
     overflow: hidden;
+    margin-left: 120px;
+
 }
 
 .event-image-placeholder img {
-    width: 100%;
+    width: 100%; /* Make image fit the container width */
     height: auto; /* Maintain aspect ratio */
     object-fit: contain; /* Ensure full image visibility */
 }
+
 
 /* Event Description */
 .event-detail-content p {
